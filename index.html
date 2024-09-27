@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS2.css">
+</head>
+
+<body>
+  <div class="topnav">
+    <a class="active" href="Resume-Napat Seelueang.html">Home</a>
+    <a href="Personal_Data.html">Personal Data</a>
+    <a href="Education.html">Education</a>
+    <a href="Qualifications.html">Skill</a>
+  </div>
+  <h2 style="text-align:center">Let's get to know me</h2>
+
+  <div class="container">
+    <div class="mySlides">
+      <div class="numbertext">1 / 5</div>
+      <img src="imag/To My RESUME.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 5</div>
+      <img src="imag/image3.png" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 5</div>
+      <img src="imag/image4.png" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 5</div>
+      <img src="imag/image2.png" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">5 / 5</div>
+      <img src="imag/image.png" style="width:100%">
+    </div>
+
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <img class="demo cursor" src="imag/To My RESUME.jpg" style="width:100%" onclick="currentSlide(1)"
+          alt="MY RESUME">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="imag/image3.png" style="width:100%" onclick="currentSlide(2)" alt="ABOUT ME">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="imag/image4.png" style="width:100%" onclick="currentSlide(3)" alt="EDUCATION">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="imag/image2.png" style="width:100%" onclick="currentSlide(4)" alt="MY SKILL">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="imag/image.png" style="width:100%" onclick="currentSlide(5)" alt="CONTACTS">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("demo");
+      let captionText = document.getElementById("caption");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+  </script>
+  <div class="container">
+    <h1 class="mb-4" align="center">API Data</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" style="background-color: white;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Lux Sensor</th>
+                    <th>Motion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5">Loading...</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="card mb-4">
+          <div class="card-header">
+              <h5 class="mb-0">Input data</h5>
+          </div>
+          <div class="card-body">
+              <form id="dataForm">
+                  <div class="form-group">
+                      <label for="id">ID</label>
+                      <input type="text" id="id" name="id" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" id="name" name="name" class="form-control" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form> 
+          </div>
+      </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+     let orderCounter = 0; // เริ่มที่ 0
+
+function fetchData() {
+    fetch('https://206.189.146.138/api/sensors')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            console.log(data);
+            const tbody = document.querySelector('tbody');
+            tbody.innerHTML = ''; 
+            
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${new Date(data.timestamp).toLocaleString()}</td>
+                <td>${data.temperature.toFixed(2)} °C</td>
+                <td>${data.humidity.toFixed(2)} %</td>
+                <td>${data.luxsensor.toFixed(2)} lx</td>
+                <td>${data.motion ? 'Yes' : 'No'}</td>
+            `;
+            tbody.appendChild(row);
+        })
+        .catch(error => {
+            const tbody = document.querySelector('tbody');
+            tbody.innerHTML = `<tr><td colspan="5">Error fetching data: ${error}</td></tr>`;
+        });
+}
+
+// เรียกข้อมูลทุก 1 วินาที
+setInterval(fetchData, 1000);
+
+// เรียกข้อมูลครั้งแรกทันทีเมื่อโหลดหน้า
+fetchData();
+
+// จัดการการส่งฟอร์ม
+document.getElementById('dataForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // หยุดการส่งฟอร์มโดยอัตโนมัติ
+    const id = document.getElementById('id').value;
+    const name = document.getElementById('name').value;
+
+    // ส่งข้อมูลไปยัง API
+    const apiUrl = 'https://206.189.146.138/api/students'; // แทนที่ด้วย URL จริง
+    const payload = {
+        order: orderCounter++, // ใช้ค่า orderCounter และเพิ่มขึ้นทีละ 1
+        id: id,
+        name: name,
+        status: 'Posted' // ตั้งค่า status เป็น 'Posted'
+    };
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        console.log('Success:', data);
+        fetchData(); // เรียกข้อมูลใหม่หลังจากส่ง
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    // เคลียร์ฟอร์ม
+    this.reset();
+});
+
+// เรียกข้อมูลครั้งแรกทันทีเมื่อโหลดหน้า
+fetchData();
+</script>
+
+  
+</body>
+
+</html>
