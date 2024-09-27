@@ -1,0 +1,80 @@
+body {
+    background-image: url(imag/IMG_5899.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    color: #feed00;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Create a right-aligned (split) link inside the navigation bar */
+.topnav a.split {
+    float: right;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.personal_info {
+    align-items: center;
+    text-align: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.ul {
+    text-align: center;
+}
+
+.info-table {
+    font-family: "Monaco", serif;
+    font-size: 25px;
+    line-height: 1.8;
+}
+
+.info-table img {
+    width: 220%;
+    border-radius: 200px;
+
+}
+
+
+.footer {
+    text-align: left;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffcd36;
+}
+
+.header {
+    text-align: left;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffcd36;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS1.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="Resume-Napat Seelueang.html">Home</a>
+        <a href="Personal_Data.html">Personal Data</a>
+        <a href="Education.html">Education</a>
+        <a href="Qualifications.html">Skill</a>
+    </div>
+
+    <h2 style="margin-left: 32px;">MY Education</h2>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Junior_high_school')" id="defaultOpen">Junior high
+            school</button>
+        <button class="tablinks" onclick="openCity(event, 'Vocational_Certificate')">Vocational Certificate</button>
+        <button class="tablinks" onclick="openCity(event, 'University')">University</button>
+    </div>
+
+    <div id="Junior_high_school" class="tabcontent">
+        <table>
+            <tr>
+                <td width="20%">
+                    <p align="center">
+                        <image src="imag/113.png" width="130px" alt="Photo not found"></image>
+                    </p>
+                </td>
+                <td>
+                    <h3>Bandongbang School</h3>
+                    <p>Junior High School : Grade 7-9</p>
+                    <p>Since : May,2014 - March,2017</p>
+                    <p>GPAX : 3.80</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="Vocational_Certificate" class="tabcontent">
+        <table>
+            <tr>
+                <td width="20%">
+                    <p align="center">
+                        <image src="imag/112.png" width="130px" alt="Photo not found"></image>
+                    </p>
+                </td>
+                <td>
+                    <h3>Prachinburi Technical College</h3>
+                    <p>Vocational Certificate : 1-3</p>
+                    <p>Since : May,2017 - March,2019</p>
+                    <p>GPAX : 3.93</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="University" class="tabcontent">
+        <table>
+            <tr>
+                <td width="20%">
+                    <p align="center">
+                        <image src="imag/114.png" width="130px" alt="Photo not found"></image>
+                    </p>
+                </td>
+                <td>
+                    <h3>King Mongkut's University of Technology North Bangkok</h3>
+                    <p>Faculty of Engineering</p>
+                    <p>Department of Instrumentation and Electronics Engineering</p>
+                    <p>Since : June,2020 - Present</p>
+                    <p>GPAX : 2.51</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+
+</html>
